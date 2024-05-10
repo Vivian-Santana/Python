@@ -1,0 +1,52 @@
+'''
+a tabela de produtos é armazenada em um dicionário chamado tabela_produtos, 
+em que a chave é o código do produto e o valor é uma lista contendo a descrição 
+e o valor do produto. Em seguida, utilizamos um loop while True para repetir o 
+processo de receber o código do produto até que o cliente deseje encerrar o pedido.
+
+Dentro do loop, verificamos se o código digitado pelo cliente é válido. 
+Se não for, exibimos a mensagem de "opção inválida" e utilizamos o comando 
+continue para voltar ao início do loop e pedir novamente o código. 
+Se o código for válido, exibimos a descrição e o valor do produto selecionado, 
+adicionamos o valor ao total e perguntamos se o cliente deseja pedir mais alguma coisa. 
+Se a resposta for "n" (não), utilizamos o comando break para sair do loop.
+
+No final, exibimos o valor total da conta do cliente.
+'''
+
+tabela_produtos = {
+    100: ['Cachorro-Quente', 9.00],
+    101: ['Cachorro-Quente Duplo', 11.00],
+    102: ['X-Egg', 12.00],
+    103: ['X-Salada', 13.00],
+    104: ['X-Bacon', 14.00],
+    105: ['X-Tudo', 17.00],
+    200: ['Refrigerante Lata', 5.00],
+    201: ['Chá Gelado', 4.00]
+}
+
+total = 0.0
+
+while True:
+    codigo = int(input('Digite o código do produto desejado (ou 0 para encerrar): '))
+
+    if codigo == 0:
+        break
+
+    if codigo not in tabela_produtos:
+        print('Opção inválida! Por favor, escolha um código válido.')
+        continue
+
+    produto = tabela_produtos[codigo]
+    descricao = produto[0]
+    valor = produto[1]
+
+    print(f'Produto selecionado: {descricao} - Valor: R${valor:.2f}')
+    total += valor
+
+    opcao = input('Deseja pedir mais alguma coisa? (S/N) ')
+
+    if opcao.lower() == 'n':
+        break
+
+print(f'Valor total: R${total:.2f}')
