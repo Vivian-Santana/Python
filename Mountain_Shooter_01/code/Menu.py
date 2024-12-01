@@ -2,7 +2,7 @@ from genericpath import getsize
 from tkinter.font import Font
 import pygame
 import pygame.image
-from code.Const import WIN_WIDTH
+from code.Const import COLOR_ORANGE, COLOR_WHITE, MENU_OPTION, WIN_WIDTH
 
 
 class Menu:
@@ -17,7 +17,11 @@ class Menu:
         pygame.mixer_music.play(-1)
         while True:
             self.window.blit(source=self.surf, dest=self.rect) # faz a img aparecer no retangulo criado
-            self.menu_text(text_size = 50, text="Mountain", text_color=(255, 128, 0), text_center_pos= ((WIN_WIDTH / 2), 70))
+            self.menu_text(text_size = 50, text="Mountain", text_color= COLOR_ORANGE, text_center_pos= ((WIN_WIDTH / 2), 70))
+            self.menu_text(text_size = 50, text="Shooter", text_color= COLOR_ORANGE, text_center_pos= ((WIN_WIDTH / 2), 120))
+
+            for i in range(len(MENU_OPTION)):
+                 self.menu_text(text_size = 20, text= MENU_OPTION[i], text_color= COLOR_WHITE, text_center_pos= ((WIN_WIDTH / 2), 200 + 25 * i))
             
             pygame.display.flip() # atualiza na tela
 
